@@ -23,7 +23,7 @@
             <input type = "text" placeholder = "Author" name = "author" required>
             </br>
             <label for="Post"></label>
-            <textarea name="post" rows="10" cols="50">Write something here</textarea>
+            <textarea name="post"></textarea>
             </br>
             <input type="submit" class="button" name = "submit">
 
