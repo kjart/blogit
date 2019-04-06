@@ -18,12 +18,11 @@ if (isset($_POST['submit'])) {
 
     try {
         //convert html to markdown
-<<<<<<< HEAD
-=======
+
         $markdownAuthor = $converter->convert($author);
         $markdownTitle = $converter->convert($title);
         $markdownPost = $converter->convert($post);
->>>>>>> 0fd1e9f802108ed638735298091c885a7a1c7646
+
 
         $markdown = ["Author" => $markdownAuthor, "Title" => $markdownTitle, "Post" => $markdownPost, "Date" => $date, "Time" => $time];
         $redactedTitle = strtolower(preg_replace('/\s+/', '-', $title));
