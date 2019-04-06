@@ -15,13 +15,13 @@ if(isset($_POST['submit'])){
     $post = $_POST['post'];
     date_default_timezone_set('Africa/Lagos');
     $date = date('m/d/Y h:i:s a', time());
-    $result = array("title"=>$title, "Author"=>$author, "post"=>$post, "date"=>$date);
 
     //convert html to markdown
     $markdown = $converter->convert($post);
 
-    $filename = '.'.DIRECTORY_SEPARATOR."posts".DIRECTORY_SEPARATOR.$title.'.md';
-
+    //add the directory and file name
+    $filename = '.'.DIRECTORY_SEPARATOR."posts".DIRECTORY_SEPARATOR.$date.$author.'.md';
+    //php native function to write to the file
     $handle = file_put_contents($filename, $markdown);
 }
 
