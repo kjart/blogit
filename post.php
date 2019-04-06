@@ -8,22 +8,31 @@ $converter->getConfig()->setOption('italic_style', '*');
 $converter->getConfig()->setOption('bold_style', '__');
 $converter->getConfig()->setOption('hard_break', true);
 
-
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $author = $_POST['author'];
     $post = $_POST['post'];
     date_default_timezone_set('Africa/Lagos');
-    $filename = time();
-
+    $date = date('m-d-Y', time());
+    $time = time();
 
     try {
         //convert html to markdown
+<<<<<<< HEAD
+=======
+        $markdownAuthor = $converter->convert($author);
+        $markdownTitle = $converter->convert($title);
+        $markdownPost = $converter->convert($post);
+>>>>>>> 0fd1e9f802108ed638735298091c885a7a1c7646
 
+        $markdown = ["Author" => $markdownAuthor, "Title" => $markdownTitle, "Post" => $markdownPost, "Date" => $date, "Time" => $time];
+        $redactedTitle = strtolower(preg_replace('/\s+/', '-', $title));
         //add the directory and file name
-        $fileLocation = '.' . DIRECTORY_SEPARATOR . "posts" . DIRECTORY_SEPARATOR . $filename.'.md';
+        $filename = '.' . DIRECTORY_SEPARATOR . "posts" . DIRECTORY_SEPARATOR . $redactedTitle . "-" . $date . "-" . $time . '.md';
         //php native function to write to the file
-        $handle = file_put_contents( $fileLocation, $markdown);
+        foreach ($markdown as $key => $value) {
+            $handle = file_put_contents($filename, $key . ": " . $value . "\r\n", FILE_APPEND);
+        }
         echo 'Post saved!';
     } catch (\Throwable $th) {
 
@@ -32,5 +41,3 @@ if(isset($_POST['submit'])){
     }
 
 }
-
-?>
