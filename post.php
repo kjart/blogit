@@ -23,6 +23,7 @@ if (isset($_POST['submit'])) {
         $markdownPost = $converter->convert($post);
 
         $markdown = ["Author" => $markdownAuthor, "Title" => $markdownTitle, "Post" => $markdownPost, "Date" => $date, "Time" => $time];
+
         $redactedTitle = strtolower(preg_replace('/\s+/', '-', $title));
         //add the directory and file name
         $filename = '.' . DIRECTORY_SEPARATOR . "posts" . DIRECTORY_SEPARATOR . $redactedTitle . "-" . $date . "-" . $time . '.md';
