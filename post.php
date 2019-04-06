@@ -19,16 +19,11 @@ if(isset($_POST['submit'])){
 
     try {
         //convert html to markdown
-        $markdown = array(
-            "title" => $converter->convert($title),
-            "author" => $converter->convert($author),
-            "post" => $converter->convert($post),
-            "date" => $converter->convert($filename)
-        );
+
         //add the directory and file name
         $fileLocation = '.' . DIRECTORY_SEPARATOR . "posts" . DIRECTORY_SEPARATOR . $filename.'.md';
         //php native function to write to the file
-        $handle = file_put_contents( $fileLocation, json_encode($markdown));
+        $handle = file_put_contents( $fileLocation, $markdown);
         echo 'Post saved!';
     } catch (\Throwable $th) {
 
