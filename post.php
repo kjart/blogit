@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
     $author = $_POST['author'];
     $post = $_POST['post'];
     date_default_timezone_set('Africa/Lagos');
-    $date = date('m-d-Y', time());
+    $filename = time();
 
 
     try {
@@ -22,9 +22,9 @@ if(isset($_POST['submit'])){
         $markdown = $converter->convert($post);
 
         //add the directory and file name
-        $filename = '.' . DIRECTORY_SEPARATOR . "posts" . DIRECTORY_SEPARATOR . $date . '.md';
+        $fileLocation = '.' . DIRECTORY_SEPARATOR . "posts" . DIRECTORY_SEPARATOR . $filename.'.md';
         //php native function to write to the file
-        $handle = file_put_contents($filename, $markdown);
+        $handle = file_put_contents( $fileLocation, $markdown);
         echo 'Post saved!';
     } catch (\Throwable $th) {
 
