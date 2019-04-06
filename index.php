@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
         <h1> Add Post</h1>
         <main>
            
-        <form method = "post" action = "post.php">
+        <form method = "post" action = "post.php" enctype = "multipart/form-data">
             <label for = "Title"></label>
             <input type = "text" placeholder = "Post Title" name = "title" required>
             </br>
@@ -20,10 +21,7 @@
             <label for="Post"></label>
             <textarea name="post" rows="10" cols="50">Write something here</textarea> 
             </br>
-            <label for="post-date">Enter date:</label>
-            <input type="datetime-local" id="post-date" name="post-date" value="2019-05-12T19:30">
-            </br>   
-            <button type="button" class="button" id = "submit"><span>Submit</span></button>
+            <input type="submit" class="button" name = "submit">
         
         </form>
         
