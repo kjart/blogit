@@ -18,9 +18,11 @@ if (isset($_POST['submit'])) {
 
     try {
         //convert html to markdown
+
         $markdownAuthor = $converter->convert($author);
         $markdownTitle = $converter->convert($title);
         $markdownPost = $converter->convert($post);
+
 
         $markdown = ["Author" => $markdownAuthor, "Title" => $markdownTitle, "Post" => $markdownPost, "Date" => $date, "Time" => $time];
 
