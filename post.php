@@ -18,17 +18,13 @@ if (isset($_POST['submit'])) {
 
     try {
         //convert html to markdown
-
-        $markdownAuthor = $converter->convert($author);
-        $markdownTitle = $converter->convert($title);
         $markdownPost = $converter->convert($post);
 
-
-        $markdown = ["Author" => $markdownAuthor, "Title" => $markdownTitle, "Post" => $markdownPost, "Date" => $date, "Time" => $time];
+        $markdown = ["Author" => $author, "Title" => $title, "Post" => $post, "Date" => $date, "Time" => $time];
 
         $redactedTitle = strtolower(preg_replace('/\s+/', '-', $title));
         //add the directory and file name
-        $filename = '.' . DIRECTORY_SEPARATOR . "posts" . DIRECTORY_SEPARATOR . $date . "-" . $time . '.md';
+        $filename = '.' . DIRECTORY_SEPARATOR . "posts" . DIRECTORY_SEPARATOR . $redactedTitle . "-" . $date . "-" . $time . '.md';
         //php native function to write to the file
         foreach ($markdown as $key => $value) {
             $handle = file_put_contents($filename, $key . ": " . $value . "\r\n", FILE_APPEND);

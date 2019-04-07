@@ -2,7 +2,7 @@
   /***************************************************
    * Only these origins are allowed to upload images *
    ***************************************************/
-  $accepted_origins = array("http://localhost:1000");
+  $accepted_origins = array("http://localhost:1000", "localhost:2000", "https://ziki.hng.tech");
 
   /*********************************************
    * Change this line to set the upload folder *
