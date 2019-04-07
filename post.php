@@ -29,11 +29,26 @@ if (isset($_POST['submit'])) {
         foreach ($markdown as $key => $value) {
             $handle = file_put_contents($filename, $key . ": " . $value . "\r\n", FILE_APPEND);
         }
-        echo 'Post saved!';
+        //Paul codes from here
+        $directory = "posts/";
+        $dir = opendir($directory);
+        while (($file = readdir($dir)) !== false) {
+            $filename = $directory . $file;
+            $type = filetype($filename);
+            if ($type == 'file') {
+                $contents = file_get_contents($filename);
+                $items = explode('¬', $contents);
+                echo '<table width="500" border="1" cellpadding="4">';
+                foreach ($items as $item) {
+                    echo "<tr><td>$item</td></tr>\n";
+                }
+                echo '</table>';
+            }
+        }
+        closedir($dir);
+        //Paul code stops here
     } catch (\Throwable $th) {
 
         throw new Exception("Error Processing Request", 1);
-
     }
-
 }
