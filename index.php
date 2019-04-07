@@ -32,10 +32,18 @@
     <script>
         tinymce.init({
             selector: 'textarea',
-            plugins: 'image link lists checklist media code',
-            toolbar: 'link image media undo redo code',
+            height: 500,
+            resize: false,
+            autosave_ask_before_unload: false,
+            plugins: 'image link lists checklist media code autolink textcolor powerpaste tinymcespellchecker searchreplace table template textcolor tinymcespellchecker visualblocks wordcount mentions codesample colorpicker fullscreen help',
+            toolbar: 'link image media undo redo insertfile a11ycheck template codesample code bold italic underline numlist bullist outdent indent alignleft aligncenter alignright alignfull forecolor backcolor',
+            powerpaste_word_import: 'clean',
+            powerpaste_html_import: 'clean',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i'
+            ],
             toolbar_drawer: 'sliding',
-            menubar: "insert",
+            menubar: false,
             images_upload_url: 'imageProcessor.php',
             images_upload_credentials: true
             // images_upload_handler: function(blobInfo, success, failure) {

@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
 
         $redactedTitle = strtolower(preg_replace('/\s+/', '-', $title));
         //add the directory and file name
-        $filename = '.' . DIRECTORY_SEPARATOR . "posts" . DIRECTORY_SEPARATOR . $redactedTitle . "-" . $date . "-" . $time . '.md';
+        $filename = '.' . DIRECTORY_SEPARATOR . "posts" . DIRECTORY_SEPARATOR . $date . "-" . $time . '.md';
         //php native function to write to the file
         foreach ($markdown as $key => $value) {
             $handle = file_put_contents($filename, $key . ": " . $value . "\r\n", FILE_APPEND);
