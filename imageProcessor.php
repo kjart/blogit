@@ -38,9 +38,10 @@
         header("HTTP/1.1 400 Invalid extension.");
         return;
     }
-
+       $ext = pathinfo($temp['name'], PATHINFO_EXTENSION);
+      $uniqueImageName = uniqid();
     // Accept upload if there was no origin, or if it is an accepted origin
-    $filetowrite = $imageFolder . $temp['name'];
+    $filetowrite = $imageFolder . $uniqueImageName.'.'.$ext;
     move_uploaded_file($temp['tmp_name'], $filetowrite);
 
     // Respond to the successful upload with JSON.
