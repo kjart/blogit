@@ -3,7 +3,7 @@ require 'vendor/autoload.php';
 
 use League\HTMLToMarkdown\HtmlConverter;
 
-$converter = new HtmlConverter();
+$converter = new HtmlConverter(array('strip_tags' => true));
 $converter->getConfig()->setOption('italic_style', '*');
 $converter->getConfig()->setOption('bold_style', '__');
 $converter->getConfig()->setOption('hard_break', true);
