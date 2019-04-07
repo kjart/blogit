@@ -1,4 +1,5 @@
 <?php
+include "read.php";
 require 'vendor/autoload.php';
 
 use League\HTMLToMarkdown\HtmlConverter;
@@ -29,7 +30,14 @@ if (isset($_POST['submit'])) {
         foreach ($markdown as $key => $value) {
             $handle = file_put_contents($filename, $key . ": " . $value . "\r\n", FILE_APPEND);
         }
-        //Paul codes from here
+        //me and Chiaju
+        $read = new Read();
+        $readPost = $read->readPost();
+        foreach($readPost as $key => $value){
+            //test the ouput of contents in the file
+            echo  $key . " ". $value;
+        }
+        /*//Paul codes from here
         $directory = "posts/";
         $dir = opendir($directory);
         while (($file = readdir($dir)) !== false) {
@@ -47,6 +55,7 @@ if (isset($_POST['submit'])) {
         }
         closedir($dir);
         //Paul code stops here
+        */
     } catch (\Throwable $th) {
 
         throw new Exception("Error Processing Request", 1);
